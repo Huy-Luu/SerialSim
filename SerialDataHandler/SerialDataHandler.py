@@ -5,6 +5,9 @@ class SerialDataHandler():
     def __init__(self, port, baudrate):
         self.handler = serial.Serial(port, baudrate)
 
+    def send(self, dir):
+        self.handler.write(bytes(dir, 'utf-8'))
+
     def receiveOneInput(self):
         incoming = self.handler.readline()
         converted = str(incoming,'ascii').rstrip()
